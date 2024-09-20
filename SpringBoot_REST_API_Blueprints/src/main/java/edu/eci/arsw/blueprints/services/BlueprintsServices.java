@@ -72,5 +72,21 @@ public class BlueprintsServices {
         fpp.filterBlueprint(blueprint1Filter);
         return blueprint1Filter;
     }
-    
+
+    public void updateBlueprint(String author, String bpname, Blueprint updatedBlueprint) throws BlueprintNotFoundException, BlueprintPersistenceException {
+        Blueprint existingBlueprint = getBlueprintsByAuthor(author)
+                .stream()
+                .filter(bp -> bp.getName().equals(bpname))
+                .findFirst()
+                .orElseThrow(() -> new BlueprintNotFoundException("Blueprint not found"));
+
+        existingBlueprint.setPoints(updatedBlueprint.getPoints());
+
+        saveBlueprint(existingBlueprint);
+    }
+
+    public void saveBlueprint(Blueprint blueprint) throws BlueprintPersistenceException {
+        // Implementa la lógica para guardar el plano en tu repositorio
+        bpp.saveBlueprint(blueprint);
+    }
 }
