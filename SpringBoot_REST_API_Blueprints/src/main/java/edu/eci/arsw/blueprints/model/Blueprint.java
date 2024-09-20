@@ -14,6 +14,8 @@ public class Blueprint {
     private List<Point> points=null;
     
     private String name=null;
+
+    private int version; // nuevo campo para control de versiones
             
     public Blueprint(String author,String name,Point[] pnts){
         this.author=author;
@@ -87,6 +89,15 @@ public class Blueprint {
         }
         
         return true;
+    }
+
+    public int getVersion() {
+        return version;
+    }
+
+
+    public void setVersion(int version) {
+        this.version = version;
     }
     
     

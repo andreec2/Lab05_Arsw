@@ -80,10 +80,16 @@ public class BlueprintsServices {
                 .findFirst()
                 .orElseThrow(() -> new BlueprintNotFoundException("Blueprint not found"));
 
+        if (existingBlueprint.getVersion() != updatedBlueprint.getVersion()) {
+            throw new ConcurrentModificationException("Blueprint has been modified by another transaction.");
+        }
+
         existingBlueprint.setPoints(updatedBlueprint.getPoints());
+        existingBlueprint.setVersion(existingBlueprint.getVersion() + 1); // incrementar la versión
 
         saveBlueprint(existingBlueprint);
     }
+
 
     public void saveBlueprint(Blueprint blueprint) throws BlueprintPersistenceException {
         // Implementa la lógica para guardar el plano en tu repositorio
