@@ -1,0 +1,24 @@
+#/SpringBoot_REST_API_Blueprints/
+# Archivos y carpetas del IDE
+.idea/
+*.iml
+
+# Carpetas de compilación y generación
+target/
+build/
+
+# Archivos de logs
+*.log
+
+# Archivos temporales del sistema
+.DS_Store
+Thumbs.db
+
+# Archivos de Maven
+mvnw
+mvnw.cmd
+
+# Otros archivos y carpetas generados
+generated-sources/
+generated-test-sources/
+surefire-reports/
