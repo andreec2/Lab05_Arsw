@@ -37,4 +37,6 @@ public interface BlueprintsPersistence {
 
     public Set<Blueprint> getAllBlueprints();
 
+    public void updateBlueprints(Blueprint bp);
+
 }

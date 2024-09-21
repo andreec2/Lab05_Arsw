@@ -42,7 +42,7 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
                 new Point(140, 140) };
         Point[] points = new Point[] { new Point(10, 10), new Point(20, 20) };
         Blueprint bp = new Blueprint("_authorname_", "_bpname_ ", pts);
-        Blueprint an = new Blueprint("andres", "MyPlane", pts);
+        Blueprint an = new Blueprint("andres", "MyPlane", points);
         // Blueprint jp=new Blueprint("juan","MyBook", points);
         blueprints.put(new Tuple<>(bp.getAuthor(), bp.getName()), bp);
         blueprints.put(new Tuple<>(an.getAuthor(), an.getName()), an);
@@ -127,6 +127,12 @@ public class InMemoryBlueprintPersistence implements BlueprintsPersistence {
     @Override
     public Set<Blueprint> getAllBlueprints() {
         return new HashSet<>(blueprints.values());
+    }
+
+    @Override
+    public void updateBlueprints(Blueprint bp) {
+        blueprints.remove(new Tuple<>(bp.getAuthor(), bp.getName()), bp);
+        blueprints.put(new Tuple<>(bp.getAuthor(), bp.getName()), bp);
     }
 
     /**

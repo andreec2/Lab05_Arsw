@@ -21,6 +21,7 @@ public class Blueprint {
         this.author=author;
         this.name=name;
         points=Arrays.asList(pnts);
+        this.version = 0;
     }
          
     public Blueprint(String author, String name){
